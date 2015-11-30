@@ -10,6 +10,10 @@
     "default_popup": "popup.html",
     "default_title": "Welcome chandan"
   },
+  "chrome_url_overrides" : {
+      "newtab" : "NewTab.html"
+  },
+
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/",
