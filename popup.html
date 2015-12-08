@@ -6,18 +6,19 @@
  -->
 <html>
   <head>
-    <title>Getting StartedExtension's Popup</title>
+    <title>Save Opened Tabs</title>
     <style>
       body {
         font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
         font-size: 100%;
+        background: aliceblue;
       }
       #status {
         /* avoid an excessively wide status text */
-        white-space: pre;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        max-width: 400px;
+        font-size: 20px;
+        font-color:#ddd;
+        width: 200px;
+        height: 100px;
       }
     </style>
 
@@ -27,10 +28,12 @@
       -
       - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
      -->
-    <script src="popup.js"></script>
+    <script src="saveTab.js"></script>
   </head>
   <body>
-    <div id="status"></div>
-    <img id="image-result" hidden>
+    <div id="status">All Tabs are Saved
+      <div id="openTabs"></div>
+    </div> 
+
   </body>
 </html>
