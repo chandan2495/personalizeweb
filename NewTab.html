@@ -1,30 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>New Tab</title>
-</head>
-<style>
-	html { 
-  background: url(img/new_tab_background.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-.welcome-title{
+	<head>
+		<meta charset="UTF-8">
+		<title>New Tab</title>
+		<!-- Latest compiled and minified CSS & JS -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/material.min.css">
+		<link rel="stylesheet" href="css/ripples.min.css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/material.min.js"></script>
+		<script src="js/ripples.min.js"></script>
+	</head>
+	<style>
+		html {
+	background: url(img/new_tab_background.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	}
+	.welcome-title{
 	margin: 2% 0 0 35%;
-    font-size: -webkit-xxx-large;
-    font-family: fantasy;
-    color: darkslategrey;
-    opacity: 0.7;
-}
-</style>
-<body>
-	<div class="welcome-title">Welcome, Chandan Singh</div>
-	<div class="" id="showTabs">
-		
-	</div>
-</body>
-<script src="newTab.js"></script>
+	font-size: -webkit-xxx-large;
+	font-family: fantasy;
+	color: darkslategrey;
+	opacity: 0.7;
+	}
+	.tab-body{
+		height: 200px;
+		padding: 67px 100px;
+	}
+	.tab-body img{
+		width: 50px;
+		height: 50px;
+	}
+	body{
+		background: none !important;
+	}
+	</style>
+	<body ng-app="myapp" ng-controller="maincontroller">
+		<div class="welcome-title">Welcome, Chandan Singh</div>
+		<div class="container" id="showTabs">
+			<div class="row">
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" ng-repeat="url in lastOpenedUrls">
+					<a href="{{url.url}}">
+						<div class="panel panel-primary tab">
+							<div class="panel-heading tab-heading" title='{{url.fullTitle}}'>
+								<h5>{{url.title}}&hellip;</h5>
+							</div>
+							<div class="panel-body tab-body">
+								<img ng-src="{{url.icon}}" alt=""/>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script src="js/newTab.js"></script>
 </html>

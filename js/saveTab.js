@@ -7,8 +7,8 @@ var queryInfo = {
   	var urls=[];
   	for(var tab=0;tab<tabs.length;tab++){
   		var url={};
-  		url.title=tabs[tab].title.substring(0,10);
-  		url.fullTitle=tabs[tab].title;
+  		url.title=tabs[tab].title.substring(0,20);
+      url.fullTitle=tabs[tab].title;
   		url.url=tabs[tab].url;
   		url.icon=tabs[tab].favIconUrl;
   		urls.push(url);  		
