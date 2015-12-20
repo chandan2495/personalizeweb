@@ -38,9 +38,15 @@
 	body{
 		background: none !important;
 	}
+	.open-all{
+		margin-left: 50%;
+	}
 	</style>
 	<body ng-app="myapp" ng-controller="maincontroller">
-		<div class="welcome-title">Welcome, Chandan Singh</div>
+		<!-- <div class="welcome-title">Welcome, Chandan Singh</div> -->
+		<div class="open-all">
+			<button type="button" class="btn btn-info" id='openAll' ng-click='openAll()'>Open All</button>
+		</div>
 		<div class="container" id="showTabs">
 			<div class="row">
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" ng-repeat="url in lastOpenedUrls">
