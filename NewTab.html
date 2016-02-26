@@ -13,13 +13,22 @@
 		<script src="js/ripples.min.js"></script>
 	</head>
 	<style>
-		html {
-	background: url(img/new_tab_background.jpg) no-repeat center center fixed;
+	html,body {
+	height: auto;
+	}
+
+	html{
+		margin-left: calc(100vw - 100%);
+		margin-right: 0;
+	}
+	html {
+	background: url('https://source.unsplash.com/category/nature/1920x1080') no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	}
+
 	.welcome-title{
 	margin: 2% 0 0 35%;
 	font-size: -webkit-xxx-large;
@@ -39,15 +48,18 @@
 		background: none !important;
 	}
 	.open-all{
-		margin-left: 50%;
+		text-align: center;
 	}
 	</style>
 	<body ng-app="myapp" ng-controller="maincontroller">
 		<!-- <div class="welcome-title">Welcome, Chandan Singh</div> -->
-		<div class="open-all">
+		<div class="open-all col-lg-12">
 			<button type="button" class="btn btn-info" id='openAll' ng-click='openAll()'>Open All</button>
+			<button type="button" class="btn btn-warning" ng-click='containerShow=false;'><span class='glyphicon glyphicon-eye-close'></button>
+			<button type="button" class="btn btn-warning" ng-click='containerShow=true;'><span class='glyphicon glyphicon-eye-open'></button>
+			<button type="button" class="btn btn-success" ng-click='changeWallpaper()'>Change Wallpaper</button>
 		</div>
-		<div class="container" id="showTabs">
+		<div class="container" id="showTabs" ng-show='containerShow'>
 			<div class="row">
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" ng-repeat="url in lastOpenedUrls">
 					<a href="{{url.url}}">
@@ -66,4 +78,7 @@
 	</body>
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script src="js/newTab.js"></script>
+	<script type="text/javascript">
+		$.material.init();
+	</script>
 </html>
