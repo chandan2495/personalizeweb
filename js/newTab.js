@@ -1,6 +1,8 @@
 angular.module("myapp",[]).
 controller('maincontroller', ['$scope','$http', '$q', function($scope, $http, $q) {
 	$scope.lastOpenedUrls=[];	
+	$scope.currentImageData = '';
+	$scope.isChangeWallpaper = 0; 
 	$scope.getUrlFromLocalStorage=function(){
 		$scope.lastOpenedUrls = JSON.parse(localStorage.getItem("lastOpenedUrls"));	
 	};
@@ -9,16 +11,21 @@ controller('maincontroller', ['$scope','$http', '$q', function($scope, $http, $q
 			chrome.tabs.create({ url: url.url });
 		});
 	};
-	// $scope.changeWallpaper = function(){		
-	// 	var currentTime=(new Date()).getTime();
-	// 	var random = parseInt(Math.random()*100000);
-	// 	$http.get("https://source.unsplash.com/category/nature/1024x768").then(function(data){
-	// 		console.log(btoa(data));
-	// 	}, function(error) {
-	// 		console.log(error.data);
-	// 	});
-	// 	$('html').css('background',"url(https://source.unsplash.com/category/nature/1920x1080?a="+ currentTime + "a"+ random +") no-repeat center center fixed");
-	// };
+	$scope.changeWallpaper = function(){		
+		$scope.getImageData().then(function(data){
+				$('html').css('background',"url("+ data +") no-repeat center center fixed");
+				currentImageData = data;
+				isChangeWallpaper = 1;			
+		});
+	};
+
+	$scope.downloadWallpaper = function() {
+		if ($scope.isChangeWallpaper)
+			window.location.href = currentImageData;
+		else 
+			window.location.href = localStorage.getItem('lastBackgroundImage');
+	};
+
 
 	$scope.getImageData = function() {
 		var url = "https://source.unsplash.com/category/nature/1920x1080";
